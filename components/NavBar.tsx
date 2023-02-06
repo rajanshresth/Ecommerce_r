@@ -10,15 +10,35 @@ export default function NavBar() {
   return (
     <>
       <nav className="flex flex-between lg:gap-x-[12rem] md:gap-x-[11.5rem] lg:m-2 mt-3">
-        <div className="lg:hidden">
+        <div className="lg:hidden flex justify-center items-center mx-2">
           <button onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <AiOutlineMenu /> : <RxCross1 />}
+            {isOpen ? <RxCross1 /> : <AiOutlineMenu />}
           </button>
         </div>
-        <div className="flex flex-between mx-10">
-          <h1 className="font-extrabold text-xl mr-6 mb-1 lg:mr-6 text-center ">
-            sneakers
-          </h1>
+
+        {/* mobile nav */}
+        <ul className={
+              isOpen
+                ? "flex-col flex  fixed inset-0 left-1/2 uppercase bg-gray-100 backdrop-blur-lg gap-8 p-8 lg:hidden"
+                : "hidden"
+            }>
+          <li>
+                <Link href={'/Collection'}>Collection</Link>
+              </li>
+              <li>
+              <Link href={'/Men'}>Men</Link>
+          </li>
+
+          <li>
+            <Link href={'/Women'}>Women</Link>
+          </li>
+          <li>
+            <Link href="/about">About</Link>
+          </li>
+          <li>
+            <Link href="/Contact">Contact</Link>
+          </li>
+        </ul>
 
           {/* list of Nav */}
           <ul className="hidden lg:flex flex-between gap-2 font-light justify-center items-center">
